@@ -17,7 +17,7 @@ namespace Application.Algorithms
                 case AlgorithmStrategy.Dijkstra:
                     return new DijkstraStrategy();
                 default:
-                    throw new AlgorithmStrategyException(AlgorithmStrategyException.InvalidAlgorithmStrategyMessage);
+                    throw new AlgorithmStrategyException(algorithmStrategyEnum);
             }
         }
     }
