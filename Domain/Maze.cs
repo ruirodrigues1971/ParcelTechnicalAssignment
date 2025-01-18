@@ -27,6 +27,18 @@ namespace Domain
         private Cell? _StartingCell;
         private Cell? _EndCell;
 
+        public Cell StartingCell { 
+            get {
+                return _StartingCell ?? throw new MazeException(NO_START_POINT_FOUND);
+            }  
+        }
+        public Cell EndCell
+        {
+            get
+            {
+                return _EndCell ?? throw new MazeException(NO_END_POINT_FOUND);
+            }
+        }
 
         /*Errors*/
 
