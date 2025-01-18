@@ -19,9 +19,15 @@ namespace Domain
             }
             X = x;
             Y = y;
-            IsEmptySpace = maze[x, y] == Maze.EMPTY_SPACE;            
+            IsEmptySpace = maze[x, y] == Maze.EMPTY_SPACE;
         }
 
+        public Cell(int x, int y, bool IsEmptySpace)
+        {
+            X = x;
+            Y = y;
+            this.IsEmptySpace = IsEmptySpace;
+        }
         public static List<Cell> GetNeighbors(Maze maze, int x, int y)
         {
             var neighbors = new List<Cell>();

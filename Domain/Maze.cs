@@ -9,7 +9,7 @@ namespace Domain
         public const char START = 'S';
         public const char END = 'G';
         public const char WALL = 'X';
-        public const char EMPTY_SPACE = '_';        
+        public const char EMPTY_SPACE = '_';
 
         public const string LinuxNewLine = "\n";
         public const string WindowsNewLine = "\r\n";
@@ -23,9 +23,10 @@ namespace Domain
         ///- `_`: Empty Space
         ///- `X`: Wall
         /// </summary>
-        private readonly List<List<char>>? _MazeArray;
-        private bool _HasStartPoint = false;
-        private bool _HasEndPoint = false;
+        private List<List<char>>? _MazeArray;
+        private Cell? _StartingCell;
+        private Cell? _EndCell;
+
 
         /*Errors*/
 
@@ -46,7 +47,7 @@ namespace Domain
         public Maze(string mazeString)
         {
             this.MazeString = mazeString;
-            _MazeArray = ConstructArray(mazeString);
+            ConstructArray(mazeString);
             if (_MazeArray == null)
             {
                 throw new MazeException(MAZE_ARRAY_IS_EMPTY);
@@ -59,14 +60,13 @@ namespace Domain
         /// <param name="mazeString"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        private List<List<char>>? ConstructArray(string mazeString)
+        private void ConstructArray(string mazeString)
         {
             if (string.IsNullOrEmpty(mazeString))
             {
                 throw new MazeException(EMPTY_STRING);
             }
-
-            List<List<char>> mazeArray = new();
+            this._MazeArray = new();
             string[] rows = mazeString.Split(new[] { WindowsNewLine, LinuxNewLine }, StringSplitOptions.RemoveEmptyEntries);
             if (rows.Count() > 20)
             {
@@ -76,6 +76,8 @@ namespace Domain
             {
                 throw new MazeException("Maze is too small");
             }
+            int rowNumber = 0;
+            int colNumber;
             foreach (string rowString in rows)
             {
                 if (rowString.Count() > 20)
@@ -83,41 +85,41 @@ namespace Domain
                     throw new MazeException(MAZE_TOO_LARGE());
                 }
                 List<char> row = new();
+                colNumber = 0;
                 foreach (char c in rowString)
                 {
                     ValidateCharacter(c);
                     if (c == START)
                     {
-                        if (_HasStartPoint)
+                        if (_StartingCell != default)
                         {
                             throw new MazeException(MULTIPLE_STARTING_POINTS);
                         }
-                        _HasStartPoint = true;
+                        _StartingCell = new Cell(rowNumber, colNumber, IsEmptySpace: false);
                     }
                     if (c == END)
                     {
-                        if (_HasEndPoint)
+                        if (_EndCell != default)
                         {
                             throw new MazeException(MULTIPLE_ENDING_POINTS);
                         }
-                        _HasEndPoint = true;
+                        _EndCell = new Cell(rowNumber, colNumber, IsEmptySpace: false);
                     }
                     row.Add(c);
+                    colNumber++;
                 }
-                mazeArray.Add(row);
+                _MazeArray.Add(row);
+                rowNumber++;
             }
 
-            if (!_HasEndPoint)
+            if (_EndCell == default)
             {
                 throw new MazeException(NO_END_POINT_FOUND);
             }
-            if (!_HasStartPoint)
+            if (_StartingCell == default)
             {
                 throw new MazeException(NO_START_POINT_FOUND);
             }
-
-            
-            return mazeArray;
         }
 
         public static string MAZE_TOO_LARGE()
