@@ -157,5 +157,47 @@ namespace Domain
                 return _MazeArray[x][y];
             }
         }
+
+        /// <summary>
+        /// Get the number of rows in the maze
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="MazeException"></exception>
+        public int GetNumberRows()
+        {
+            if (_MazeArray == null)
+            {
+                throw new MazeException(MAZE_ARRAY_IS_NULL);
+            }
+            return _MazeArray.Count;
+        }
+
+        /// <summary>
+        /// Get the number of columns in the row x
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="MazeException"></exception>
+        public int GetNumberColumnsInRow(int x)
+        {
+            return this[x];
+        }
+
+        /// <summary>
+        /// Get the number of columns in the row x
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        /// <exception cref="MazeException"></exception>
+        public int this[int x]
+        {
+            get
+            {
+                if (_MazeArray == null)
+                {
+                    throw new MazeException(MAZE_ARRAY_IS_NULL);
+                }
+                return _MazeArray[x].Count;
+            }
+        }
     }
 }

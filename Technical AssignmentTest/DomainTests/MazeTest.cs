@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Technical_AssignmentTest.DomainTests
 {
-    public class SimpleMazeTest
+    public class MazeTest
     {
         [Fact]
         public void CorrectMaze()
@@ -34,6 +34,7 @@ namespace Technical_AssignmentTest.DomainTests
             Assert.NotNull(maze);
             // Add more assertions based on the properties and methods of the Maze class
         }
+
         [Fact]
         public void CorrectWindowsMaze()
         {
@@ -92,7 +93,7 @@ namespace Technical_AssignmentTest.DomainTests
                 {c}_________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -114,7 +115,7 @@ namespace Technical_AssignmentTest.DomainTests
                 X_________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -136,7 +137,7 @@ namespace Technical_AssignmentTest.DomainTests
                 SS________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -158,7 +159,7 @@ namespace Technical_AssignmentTest.DomainTests
                 S_________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -180,7 +181,7 @@ namespace Technical_AssignmentTest.DomainTests
                 S_________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -213,7 +214,7 @@ namespace Technical_AssignmentTest.DomainTests
                 S_________
                 _XXXXXXXX_
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
@@ -246,7 +247,7 @@ namespace Technical_AssignmentTest.DomainTests
                 S_________
                 _XXXXXXXX__XXXXXXXX_X
                 _X______X_
-                X_XXXX_X_
+                _X_XXXX_X_
                 _X_X__X_X_
                 _X_X__X_X_
                 _X_X____X_
