@@ -11,6 +11,9 @@ namespace Domain
     /// </summary>
     public class MazeSolution
     {
+        public const string NO_SOLUTION_FOUND = "No solution found";
+        public const string NO_PATH_FOUND = "No path found.";
+
         /// <summary>
         /// The path from the start to the goal.
         /// </summary>
@@ -30,6 +33,7 @@ namespace Domain
         /// Initializes a new instance of the <see cref="MazeSolution"/> class.
         /// </summary>
         /// <param name="path">The path from the start to the goal.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the path is null.</exception>"
         public MazeSolution(List<Cell> path)
         {
             Path = path ?? throw new ArgumentNullException(nameof(path));
@@ -49,11 +53,11 @@ namespace Domain
         {
             if (!IsSolved)
             {
-                return "No solution found.";
+                return NO_SOLUTION_FOUND;
             }
             if(Path == null)
             {
-                return "No path found.";
+                return NO_PATH_FOUND;
             }
             StringBuilder sb = new StringBuilder();
             foreach (var cell in Path)

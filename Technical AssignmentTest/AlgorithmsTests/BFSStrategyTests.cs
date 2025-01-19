@@ -46,6 +46,33 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             Assert.NotNull(result);
             Assert.Equal(pathExpected, result.ToString());
         }
+
+        [Fact]
+        public void NoSolutionPuzzleTest()
+        {
+            // Arrange
+            // Arrange
+            // Arrange
+            string mazeString =
+                """
+                S_________
+                _XXXXXXXX_
+                _XXXXXXXX_
+                XXXXXXXXGX
+                """;
+
+            // Act
+            Maze maze = new Maze(mazeString);
+
+            IAlgorithmStrategy bfsStrategy = new BfsStrategy();
+            // Act
+            var result = bfsStrategy.Solve(maze);
+            // Assert
+            string expected = MazeSolution.NO_SOLUTION_FOUND;
+            Assert.NotNull(result);
+            Assert.Equal(expected, result.ToString());
+        }
+
         [Fact]
         public void NotSoSimplePuzzleTest()
         {
