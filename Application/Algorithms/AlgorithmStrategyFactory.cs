@@ -14,8 +14,8 @@ namespace Application.Algorithms
         {
             switch(algorithmStrategyEnum)
             {
-                case AlgorithmStrategy.Dijkstra:
-                    return new DijkstraStrategy();
+                case AlgorithmStrategy.BFSPathFinding:
+                    return new BfsStrategy();
                 default:
                     throw new AlgorithmStrategyException(algorithmStrategyEnum);
             }

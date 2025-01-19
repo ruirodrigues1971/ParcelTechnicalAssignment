@@ -64,15 +64,18 @@ namespace Technical_AssignmentTest.DomainTests
             var neighborsEmptyCell = Cell.GetNeighbors(maze, 0, 1);
             var neighborsStartingCell = Cell.GetNeighbors(maze, 0, 0);
             var neighborsEmptyCell2 =  Cell.GetNeighbors(maze, 8, 9);
+            var neighborsEmptyCell3 = Cell.GetNeighbors(maze, 9, 9);
 
             // Assert
             var expectedNeighborsEmptyCell = new List<Cell>() { new(maze, 0, 2) };
             var expectedNeighborsStartingCell = new List<Cell>() { new(maze, 1, 0), new(maze, 0, 1) };
             var expectedNeighborsStartingCell2 = new List<Cell>() { new(maze, 7, 9), new(maze, 9, 9), new(maze, 8, 8) };
+            var expectedNeighborsStartingCell3 = new List<Cell>() { new(maze, 8, 9), new(maze, 9, 8)};
 
             Assert.Equal(expectedNeighborsEmptyCell, neighborsEmptyCell);
             Assert.Equal(expectedNeighborsStartingCell, neighborsStartingCell);
             Assert.Equal(expectedNeighborsStartingCell2, neighborsEmptyCell2);
+            Assert.Equal(expectedNeighborsStartingCell3, neighborsEmptyCell3);
         }
     }
 }

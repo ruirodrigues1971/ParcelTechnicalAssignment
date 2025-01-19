@@ -9,9 +9,6 @@ namespace Domain
     public enum AlgorithmStrategy
     {
         None = 0,
-        Dijkstra = 1,
-        //AStar,
-        //BreadthFirstSearch,
-        //DepthFirstSearch
+        BFSPathFinding = 1        
     }
 }

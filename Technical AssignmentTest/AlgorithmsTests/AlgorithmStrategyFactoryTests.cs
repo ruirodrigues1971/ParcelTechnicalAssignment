@@ -16,7 +16,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             // Arrange
             AlgorithmStrategyFactory algorithmStrategyFactory = new AlgorithmStrategyFactory();
             // Act
-            IAlgorithmStrategy algorithmStrategy = algorithmStrategyFactory.CreateAlgorithm(AlgorithmStrategy.Dijkstra);
+            IAlgorithmStrategy algorithmStrategy = algorithmStrategyFactory.CreateAlgorithm(AlgorithmStrategy.BFSPathFinding);
             // Assert
             Assert.NotNull(algorithmStrategy);
         }

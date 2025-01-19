@@ -6,10 +6,7 @@ namespace Domain
 {
     public class Maze
     {
-        public const char START = 'S';
-        public const char END = 'G';
-        public const char WALL = 'X';
-        public const char EMPTY_SPACE = '_';
+        
 
         public const string LinuxNewLine = "\n";
         public const string WindowsNewLine = "\r\n";
@@ -101,7 +98,7 @@ namespace Domain
                 foreach (char c in rowString)
                 {
                     ValidateCharacter(c);
-                    if (c == START)
+                    if (c == Cell.START)
                     {
                         if (_StartingCell != default)
                         {
@@ -109,7 +106,7 @@ namespace Domain
                         }
                         _StartingCell = new Cell(rowNumber, colNumber, IsEmptySpace: false);
                     }
-                    if (c == END)
+                    if (c == Cell.END)
                     {
                         if (_EndCell != default)
                         {
@@ -141,7 +138,7 @@ namespace Domain
 
         private static void ValidateCharacter(char c)
         {
-            if (c != EMPTY_SPACE && c != START && c != END && c != WALL)
+            if (c != Cell.EMPTY_SPACE && c != Cell.START && c != Cell.END && c != Cell.WALL)
             {
                 throw new MazeException(Invalid_CHAR(c));
             }

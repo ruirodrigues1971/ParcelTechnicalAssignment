@@ -30,7 +30,7 @@ namespace MazeSolverAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MazeSolution))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public ActionResult<MazeSolution> Post([FromBody][Required] string mazeString, AlgorithmStrategy algorithmStrategyEnum = AlgorithmStrategy.Dijkstra)
+        public ActionResult<MazeSolution> Post([FromBody][Required] string mazeString, AlgorithmStrategy algorithmStrategyEnum = AlgorithmStrategy.BFSPathFinding)
         {
             try
             {

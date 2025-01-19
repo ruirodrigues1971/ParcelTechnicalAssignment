@@ -8,6 +8,11 @@ namespace Domain
 {
     public record Cell
     {
+        public const char START = 'S';
+        public const char END = 'G';
+        public const char WALL = 'X';
+        public const char EMPTY_SPACE = '_';
+
         public int X { get; init; }
         public int Y { get; init; }
         public bool IsEmptySpace { get; init; }
@@ -19,7 +24,7 @@ namespace Domain
             }
             X = x;
             Y = y;
-            IsEmptySpace = maze[x, y] == Maze.EMPTY_SPACE;
+            IsEmptySpace = maze[x, y] == Cell.EMPTY_SPACE;
         }
 
         public Cell(int x, int y, bool IsEmptySpace)
@@ -32,22 +37,22 @@ namespace Domain
         {
             var neighbors = new List<Cell>();
             //upper cell
-            if (IsValidCell(maze, x - 1, y) && maze[x - 1, y] == Maze.EMPTY_SPACE)
+            if (IsValidCell(maze, x - 1, y) && (maze[x - 1, y] == Cell.EMPTY_SPACE || maze[x - 1, y] == Cell.END))
             {
                 neighbors.Add(new Cell(maze, x - 1, y));
             }
             //lower cell
-            if (IsValidCell(maze, x + 1, y) && maze[x + 1, y] == Maze.EMPTY_SPACE)
+            if (IsValidCell(maze, x + 1, y) && (maze[x + 1, y] == Cell.EMPTY_SPACE || maze[x + 1, y] == Cell.END))
             {
                 neighbors.Add(new Cell(maze, x + 1, y));
             }
             //left cell
-            if (IsValidCell(maze, x, y - 1) && maze[x, y - 1] == Maze.EMPTY_SPACE)
+            if (IsValidCell(maze, x, y - 1) && (maze[x, y - 1] == Cell.EMPTY_SPACE || maze[x, y - 1] == Cell.END))
             {
                 neighbors.Add(new Cell(maze, x, y - 1));
             }
             //right cell
-            if (IsValidCell(maze, x, y + 1) && maze[x, y + 1] == Maze.EMPTY_SPACE)
+            if (IsValidCell(maze, x, y + 1) && (maze[x, y + 1] == Cell.EMPTY_SPACE|| maze[x, y + 1] ==Cell.END))
             {
                 neighbors.Add(new Cell(maze, x, y + 1));
             }

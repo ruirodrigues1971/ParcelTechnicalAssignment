@@ -23,7 +23,7 @@ namespace Application.Services
             _Maze = maze;
         }
 
-        public MazeSolution Solve(AlgorithmStrategy algorithm = AlgorithmStrategy.Dijkstra)
+        public MazeSolution Solve(AlgorithmStrategy algorithm = AlgorithmStrategy.BFSPathFinding)
         {
             var strategy = _algorithmStrategyFactory.CreateAlgorithm(algorithm);
             return strategy.Solve(_Maze);
