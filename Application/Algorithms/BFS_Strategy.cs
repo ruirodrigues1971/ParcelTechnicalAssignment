@@ -15,17 +15,21 @@ namespace Application.Algorithms
     /// <summary>
     /// Breadth-first search algorithm to solve the maze
     /// </summary>
-    public class BfsStrategy: Strategy
+#pragma warning disable S101 // Types should be named in PascalCase
+    public class BFS_Strategy: Strategy
+#pragma warning restore S101 // Types should be named in PascalCase
     {
+        
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="maze"></param>
         /// <returns></returns>
         /// <exception cref="AlgorithmStrategyException"></exception>"
-        public override MazeSolution Solve(Maze maze)
+        public override MazeSolution Solve(Maze? maze)
         {
-            ValidateMaze(maze);
+            ValidateMazeNULL(maze);
 
             // this situation is already handled in the Maze class
             //if (NotPossibleToSolve(maze))
@@ -33,11 +37,16 @@ namespace Application.Algorithms
             //    return new MazeSolution(isSolved: false);
             //}
 
+            if (!maze!.IsPossibleToSolve)
+            {
+                return new MazeSolution(maze.PossibleReasonForNotToSolve);
+            }
+
             var queue = new Queue<Cell>();
             var visited = new HashSet<Cell>();
             var previousCells = new Dictionary<Cell, Cell?>();
 
-            queue.Enqueue(maze.StartingCell);
+            queue.Enqueue(maze!.StartingCell);
             visited.Add(maze.StartingCell);
             previousCells[maze.StartingCell] = null;
 
@@ -61,7 +70,7 @@ namespace Application.Algorithms
                 }
             }
 
-            return new MazeSolution(isSolved: false);
+            return new MazeSolution(Strategy.NO_PATH_FOUND);
         }
 
         /// <summary>

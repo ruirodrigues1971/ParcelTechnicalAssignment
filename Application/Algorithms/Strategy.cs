@@ -12,13 +12,15 @@ namespace Application.Algorithms
     /// </summary>
     public abstract class Strategy : IAlgorithmStrategy
     {
-        public abstract MazeSolution Solve(Maze maze);
+        public const string NO_PATH_FOUND = "No path found!";
+
+        public abstract MazeSolution Solve(Maze? maze);
         /// <summary>
         /// If the maze is null, throw an exception
         /// </summary>
         /// <param name="maze"></param>
         /// <exception cref="AlgorithmStrategyException"></exception>
-        protected static void ValidateMaze(Maze maze)
+        protected static void ValidateMazeNULL(Maze? maze)
         {
             if (maze == null)
             {

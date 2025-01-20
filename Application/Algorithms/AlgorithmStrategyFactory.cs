@@ -15,7 +15,7 @@ namespace Application.Algorithms
             switch(algorithmStrategyEnum)
             {
                 case AlgorithmStrategy.BFSPathFinding:
-                    return new BfsStrategy();
+                    return new BFS_Strategy();
                 default:
                     throw new AlgorithmStrategyException(algorithmStrategyEnum);
             }

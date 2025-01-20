@@ -15,6 +15,6 @@ namespace Application.Algorithms
         /// <param name="maze"></param>
         /// <returns></returns>
         /// <exception cref="AlgorithmStrategyException"></exception>"
-        MazeSolution Solve(Maze maze);
+        MazeSolution Solve(Maze? maze);
     }
 }

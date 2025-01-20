@@ -30,6 +30,12 @@ namespace Domain
         public int Steps { get; init; }
 
         /// <summary>
+        /// Some extra information when the maze is not solved.
+        /// </summary>
+        public string ReasonsForNotSolving { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Constructor for when the maze is solved.
         /// Initializes a new instance of the <see cref="MazeSolution"/> class.
         /// </summary>
         /// <param name="path">The path from the start to the goal.</param>
@@ -40,9 +46,16 @@ namespace Domain
             Steps = Path.Count;
             IsSolved = true;
         }
-        public MazeSolution(bool isSolved = false)
+
+        /// <summary>
+        /// Constructor for when the maze is not solved.
+        /// </summary>
+        /// <param name="failureReason"></param>
+        /// <param name="isSolved"></param>
+        public MazeSolution(string failureReason)
         {
-            IsSolved = isSolved;
+            this.IsSolved = false;
+            this.ReasonsForNotSolving = failureReason;
         }
 
         /// <summary>
@@ -55,7 +68,7 @@ namespace Domain
             {
                 return NO_SOLUTION_FOUND;
             }
-            if(Path == null)
+            if (Path == null)
             {
                 return NO_PATH_FOUND;
             }

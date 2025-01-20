@@ -14,7 +14,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
         public void MazeNullTest()
         {
             // Arrange
-            IAlgorithmStrategy bfsStrategy = new BfsStrategy();
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act and Assert
             var exception = Assert.Throws<AlgorithmStrategyException>(() => bfsStrategy.Solve(null));
             Assert.Equal(AlgorithmStrategyException.MazeNullError, exception.Message);
@@ -38,7 +38,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             // Act
             Maze maze = new Maze(mazeString);
 
-            IAlgorithmStrategy bfsStrategy = new BfsStrategy();
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
             var result = bfsStrategy.Solve(maze);
             // Assert
@@ -64,13 +64,99 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             // Act
             Maze maze = new Maze(mazeString);
 
-            IAlgorithmStrategy bfsStrategy = new BfsStrategy();
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
             var result = bfsStrategy.Solve(maze);
             // Assert
             string expected = MazeSolution.NO_SOLUTION_FOUND;
             Assert.NotNull(result);
             Assert.Equal(expected, result.ToString());
+        }
+
+        [Fact]
+        public void NoSolutionNoStartPointPuzzleTest()
+        {
+            // Arrange
+            // Arrange
+            // Arrange
+            string mazeString =
+                """
+                X_________
+                _XXXXXXXX_
+                _XXXXXXXX_
+                XXXXXXXXGX
+                """;
+
+            // Act
+            Maze maze = new Maze(mazeString);
+
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
+            // Act
+            var result = bfsStrategy.Solve(maze);
+            // Assert
+            Assert.NotNull(result);
+            string expected = MazeSolution.NO_SOLUTION_FOUND;
+            Assert.Equal(expected, result.ToString());
+            expected = Maze.NO_START_POINT_FOUND_ERROR;
+            Assert.Equal(expected, result.ReasonsForNotSolving);
+        }
+
+        [Fact]
+        public void NoSolutionNoEndPointPuzzleTest()
+        {
+            // Arrange
+            // Arrange
+            // Arrange
+            string mazeString =
+                """
+                S_________
+                _XXXXXXXX_
+                _XXXXXXXX_
+                XXXXXXXXXX
+                """;
+
+            // Act
+            Maze maze = new Maze(mazeString);
+
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
+            // Act
+            var result = bfsStrategy.Solve(maze);
+            // Assert
+            Assert.NotNull(result);
+            string expected = MazeSolution.NO_SOLUTION_FOUND;
+            Assert.Equal(expected, result.ToString());
+            expected = Maze.NO_END_POINT_FOUND_ERROR;
+            Assert.NotNull(result);
+            Assert.Equal(expected, result.ReasonsForNotSolving);
+        }
+
+        [Fact]
+        public void NoSolutionNoStartOrEndPointPuzzleTest()
+        {
+            // Arrange
+            // Arrange
+            // Arrange
+            string mazeString =
+                """
+                X_________
+                _XXXXXXXX_
+                _XXXXXXXX_
+                XXXXXXXXXX
+                """;
+
+            // Act
+            Maze maze = new Maze(mazeString);
+
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
+            // Act
+            var result = bfsStrategy.Solve(maze);
+            // Assert
+            Assert.NotNull(result);
+            string expected = MazeSolution.NO_SOLUTION_FOUND;
+            Assert.Equal(expected, result.ToString());
+            expected = Maze.NO_START_POINT_FOUND_ERROR + ";" + Maze.NO_END_POINT_FOUND_ERROR;
+            Assert.NotNull(result);
+            Assert.Equal(expected, result.ReasonsForNotSolving);
         }
 
         [Fact]
@@ -96,7 +182,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             // Act
             Maze maze = new Maze(mazeString);
 
-            IAlgorithmStrategy bfsStrategy = new BfsStrategy();
+            IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
             var result = bfsStrategy.Solve(maze);
             // Assert

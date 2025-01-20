@@ -103,7 +103,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.Invalid_CHAR(c), exception.Message);
+            Assert.Equal(Maze.INVALID_CHAR_ERROR_MESSAGE(c), exception.Message);
         }
 
         [Fact]
@@ -124,8 +124,41 @@ namespace Technical_AssignmentTest.DomainTests
                 XXXXXXXXG_
                 """;
             // Act and Assert
-            var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.NO_START_POINT_FOUND, exception.Message);
+            // Act 
+            Maze maze = new Maze(mazeString);
+            // Assert
+            Assert.NotNull(maze);
+            Assert.Null(maze.StartingCell);
+            Assert.NotNull(maze.EndCell);
+            Assert.False(maze.IsPossibleToSolve);
+            Assert.Equal(Maze.NO_START_POINT_FOUND_ERROR, maze.PossibleReasonForNotToSolve);
+        }
+
+        public void NoEndAndStartingPointMaze()
+        {
+            // Arrange
+            string mazeString =
+                """
+                X_________
+                _XXXXXXXX_
+                _X______X_
+                _X_XXXX_X_
+                _X_X__X_X_
+                _X_X__X_X_
+                _X_X____X_
+                _X_XXXXXX_
+                _X________
+                XXXXXXXXX_
+                """;
+            // Act and Assert
+            // Act 
+            Maze maze = new Maze(mazeString);
+            // Assert
+            Assert.NotNull(maze);
+            Assert.Null(maze.StartingCell);
+            Assert.Null(maze.EndCell);
+            Assert.False(maze.IsPossibleToSolve);
+            Assert.Equal(Maze.NO_START_POINT_FOUND_ERROR + ";" + Maze.NO_END_POINT_FOUND_ERROR, maze.PossibleReasonForNotToSolve);
         }
 
         [Fact]
@@ -147,7 +180,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.MULTIPLE_STARTING_POINTS, exception.Message);
+            Assert.Equal(Maze.MULTIPLE_STARTING_POINTS_ERROR, exception.Message);
         }
 
         [Fact]
@@ -169,7 +202,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.MULTIPLE_ENDING_POINTS, exception.Message);
+            Assert.Equal(Maze.MULTIPLE_ENDING_POINTS_ERROR, exception.Message);
         }
 
         [Fact]
@@ -189,9 +222,14 @@ namespace Technical_AssignmentTest.DomainTests
                 _X________
                 XXXXXXXXX_
                 """;
-            // Act and Assert
-            var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.NO_END_POINT_FOUND, exception.Message);
+            // Act 
+            Maze maze = new Maze(mazeString);
+            // Assert
+            Assert.NotNull(maze);
+            Assert.NotNull(maze.StartingCell);
+            Assert.Null(maze.EndCell);
+            Assert.False(maze.IsPossibleToSolve);
+            Assert.Equal(Maze.NO_END_POINT_FOUND_ERROR, maze.PossibleReasonForNotToSolve);            
         }
 
         [Fact]
@@ -202,7 +240,7 @@ namespace Technical_AssignmentTest.DomainTests
                 "";
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.EMPTY_STRING, exception.Message);
+            Assert.Equal(Maze.EMPTY_STRING_ERROR, exception.Message);
         }
 
         [Fact]
@@ -236,7 +274,7 @@ namespace Technical_AssignmentTest.DomainTests
 
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.MAZE_TOO_LARGE(), exception.Message);
+            Assert.Equal(Maze.MAZE_TOO_LARGE_ERROR_MESSAGE(), exception.Message);
         }
         [Fact]
         public void ToBigMazeInColumns()
@@ -258,7 +296,7 @@ namespace Technical_AssignmentTest.DomainTests
 
             // Act and Assert
             var exception = Assert.Throws<MazeException>(() => new Maze(mazeString));
-            Assert.Equal(Maze.MAZE_TOO_LARGE(), exception.Message);
+            Assert.Equal(Maze.MAZE_TOO_LARGE_ERROR_MESSAGE(), exception.Message);
         }
     }
 }
