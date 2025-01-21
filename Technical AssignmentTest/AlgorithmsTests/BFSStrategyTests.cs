@@ -19,7 +19,6 @@ namespace Technical_AssignmentTest.AlgorithmsTests
             var exception = Assert.Throws<AlgorithmStrategyException>(() => bfsStrategy.Solve(null));
             Assert.Equal(AlgorithmStrategyException.MazeNullError, exception.Message);
         }
-
         
         [Fact]
         public void SimplePuzzleTest()
@@ -36,7 +35,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
@@ -62,7 +61,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
@@ -88,7 +87,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
@@ -116,7 +115,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
@@ -145,7 +144,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act
@@ -180,7 +179,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             IAlgorithmStrategy bfsStrategy = new BFS_Strategy();
             // Act

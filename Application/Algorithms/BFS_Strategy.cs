@@ -31,12 +31,6 @@ namespace Application.Algorithms
         {
             ValidateMazeNULL(maze);
 
-            // this situation is already handled in the Maze class
-            //if (NotPossibleToSolve(maze))
-            //{
-            //    return new MazeSolution(isSolved: false);
-            //}
-
             if (!maze!.IsPossibleToSolve)
             {
                 return new MazeSolution(maze.PossibleReasonForNotToSolve);
@@ -46,9 +40,9 @@ namespace Application.Algorithms
             var visited = new HashSet<Cell>();
             var previousCells = new Dictionary<Cell, Cell?>();
 
-            queue.Enqueue(maze!.StartingCell);
-            visited.Add(maze.StartingCell);
-            previousCells[maze.StartingCell] = null;
+            queue.Enqueue(maze!.StartingCell!);
+            visited.Add(maze.StartingCell!);
+            previousCells[maze.StartingCell!] = null;
 
             while (queue.Count > 0)
             {

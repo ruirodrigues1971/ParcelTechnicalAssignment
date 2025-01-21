@@ -12,10 +12,11 @@ namespace Application.Algorithms
 
         public IAlgorithmStrategy CreateAlgorithm(AlgorithmStrategy algorithmStrategyEnum)
         {
-            switch(algorithmStrategyEnum)
+            switch (algorithmStrategyEnum)
             {
                 case AlgorithmStrategy.BFSPathFinding:
                     return new BFS_Strategy();
+                case AlgorithmStrategy.None:
                 default:
                     throw new AlgorithmStrategyException(algorithmStrategyEnum);
             }

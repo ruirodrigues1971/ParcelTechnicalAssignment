@@ -72,7 +72,7 @@ namespace Domain
             {
                 return NO_PATH_FOUND;
             }
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             foreach (var cell in Path)
             {
                 sb.Append($"({cell.X}, {cell.Y}) -> ");

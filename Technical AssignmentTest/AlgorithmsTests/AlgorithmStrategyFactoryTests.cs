@@ -14,7 +14,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
         public void TestAlgorithmStrategyFactory()
         {
             // Arrange
-            AlgorithmStrategyFactory algorithmStrategyFactory = new AlgorithmStrategyFactory();
+            AlgorithmStrategyFactory algorithmStrategyFactory = new();
             // Act
             IAlgorithmStrategy algorithmStrategy = algorithmStrategyFactory.CreateAlgorithm(AlgorithmStrategy.BFSPathFinding);
             // Assert
@@ -25,7 +25,7 @@ namespace Technical_AssignmentTest.AlgorithmsTests
         public void TestAlgorithmStrategyFactoryNotImplemented()
         {
             // Arrange
-            AlgorithmStrategyFactory algorithmStrategyFactory = new AlgorithmStrategyFactory();
+            AlgorithmStrategyFactory algorithmStrategyFactory = new();
             // Act
             var exception = Assert.Throws<AlgorithmStrategyException>(() => algorithmStrategyFactory.CreateAlgorithm(AlgorithmStrategy.None));
             AlgorithmStrategyException algorithmStrategyException = new(AlgorithmStrategy.None);

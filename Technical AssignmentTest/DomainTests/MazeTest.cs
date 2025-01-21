@@ -28,7 +28,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             // Assert
             Assert.NotNull(maze);
@@ -53,7 +53,7 @@ namespace Technical_AssignmentTest.DomainTests
                 "XXXXXXXXG_";
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             // Assert
             Assert.NotNull(maze);
@@ -77,7 +77,7 @@ namespace Technical_AssignmentTest.DomainTests
                 "XXXXXXXXG_";
 
             // Act
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
 
             // Assert
             Assert.NotNull(maze);
@@ -125,7 +125,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
             // Act and Assert
             // Act 
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
             // Assert
             Assert.NotNull(maze);
             Assert.Null(maze.StartingCell);
@@ -134,6 +134,7 @@ namespace Technical_AssignmentTest.DomainTests
             Assert.Equal(Maze.NO_START_POINT_FOUND_ERROR, maze.PossibleReasonForNotToSolve);
         }
 
+        [Fact]
         public void NoEndAndStartingPointMaze()
         {
             // Arrange
@@ -152,7 +153,7 @@ namespace Technical_AssignmentTest.DomainTests
                 """;
             // Act and Assert
             // Act 
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
             // Assert
             Assert.NotNull(maze);
             Assert.Null(maze.StartingCell);
@@ -223,7 +224,7 @@ namespace Technical_AssignmentTest.DomainTests
                 XXXXXXXXX_
                 """;
             // Act 
-            Maze maze = new Maze(mazeString);
+            Maze maze = new(mazeString);
             // Assert
             Assert.NotNull(maze);
             Assert.NotNull(maze.StartingCell);
