@@ -10,5 +10,6 @@ namespace Application.Algorithms
     public interface IAlgorithmStrategyFactory
     {
         IAlgorithmStrategy CreateAlgorithm(AlgorithmStrategy algorithmStrategyEnum);
+        bool IsValidAlgorithm(AlgorithmStrategy algorithmStrategyEnum);
     }
 }

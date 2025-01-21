@@ -21,5 +21,10 @@ namespace Application.Algorithms
                     throw new AlgorithmStrategyException(algorithmStrategyEnum);
             }
         }
+
+        public bool IsValidAlgorithm(AlgorithmStrategy algorithmStrategyEnum)
+        {
+            return algorithmStrategyEnum==AlgorithmStrategy.BFSPathFinding;
+        }
     }
 }

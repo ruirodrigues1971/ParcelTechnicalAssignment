@@ -19,8 +19,6 @@ namespace Application.Algorithms
     public class BFS_Strategy: Strategy
 #pragma warning restore S101 // Types should be named in PascalCase
     {
-        
-
         /// <summary>
         /// 
         /// </summary>
