@@ -2,9 +2,18 @@
 
 namespace MazeSolverAPI.HelperServices
 {
+    /// <summary>
+    /// Integrated solution class to be used in the API
+    /// </summary>
     public class IntegratedSolution
     {
-        public string Puzzle { get; set; }
-        public MazeSolution Solution { get; set; }
+        /// <summary>
+        /// The maze puzzle
+        /// </summary>
+        public string? Puzzle { get; set; }
+        /// <summary>
+        /// The maze solution
+        /// </summary>
+        public MazeSolution? Solution { get; set; }
     }
 }

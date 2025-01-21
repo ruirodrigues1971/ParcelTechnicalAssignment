@@ -7,8 +7,19 @@ using System.Text.Json.Serialization;
 
 namespace MazeSolverAPI
 {
+    /// <summary>
+    /// Main entry point for the application
+    /// </summary>
+#pragma warning disable S1118 // Utility classes should not have public constructors
     public class Program
+#pragma warning restore S1118 // Utility classes should not have public constructors
     {
+        private const string MIT_LICENCE = "https://opensource.org/licenses/MIT";
+
+        /// <summary>
+        /// Main entry point for the application
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -35,12 +46,12 @@ namespace MazeSolverAPI
                     {
                         Name = "Rui Rodrigues",
                         Email = "ruirodrigues1971@gmail.com",
-                        Url = new Uri("https://yourwebsite.com")
+                        //Url = new Uri("https://yourwebsite.com")
                     },
                     License = new OpenApiLicense
                     {
                         Name = "MIT License",
-                        Url = new Uri("https://opensource.org/licenses/MIT")
+                        Url = new Uri(MIT_LICENCE)
                     }
                 });
 

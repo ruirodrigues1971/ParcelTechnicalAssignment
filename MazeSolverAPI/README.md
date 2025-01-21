@@ -11,7 +11,7 @@ This project is a Maze Solver API that provides endpoints to solve mazes using v
 
 1. **Clone the repository**
 
-git clone https://github.com/yourusername/mazesolverapi.git
+git clone https://github.com/ruirodrigues1971/ParcelTechnicalAssignment
 
 cd mazesolverapi
 

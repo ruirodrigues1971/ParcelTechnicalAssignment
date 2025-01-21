@@ -13,6 +13,9 @@ using System.Text;
 
 namespace MazeSolverAPI.Controllers
 {
+    /// <summary>
+    /// Maze Solver Controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class MazeSolverController : ControllerBase
@@ -21,6 +24,12 @@ namespace MazeSolverAPI.Controllers
         private readonly ILogger<MazeSolverController> _logger;
         private readonly IAlgorithmStrategyFactory _algorithmStrategyFactory;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="algorithmStrategyFactory"></param>
+        /// <param name="logger"></param>
+        /// <param name="memoryCache"></param>
         public MazeSolverController(
             IAlgorithmStrategyFactory algorithmStrategyFactory,
             ILogger<MazeSolverController> logger,
@@ -69,12 +78,9 @@ namespace MazeSolverAPI.Controllers
                 return BadRequest(ex.Message);
             }
             //memory cache
-            if (_memoryCache.TryGetValue(mazeString, out MazeSolution? cacheValue))
+            if (_memoryCache.TryGetValue(mazeString, out MazeSolution? cacheValue) && cacheValue != null)
             {
-                if (cacheValue != null)
-                {
-                    return Ok(cacheValue);
-                }
+                return Ok(cacheValue);
             }
             //solving the problem
             try
