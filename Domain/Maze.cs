@@ -10,7 +10,7 @@ namespace Domain
 
         public const string LinuxNewLine = "\n";
         public const string WindowsNewLine = "\r\n";
-
+        
         public const uint MAX_DIMENSION = 20;
 
         public readonly string MazeString;

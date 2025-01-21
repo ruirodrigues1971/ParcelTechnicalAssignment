@@ -56,8 +56,7 @@ namespace Technical_AssignmentTest.DomainTests
             Maze maze = new(mazeString);
 
             // Assert
-            Assert.NotNull(maze);
-            // Add more assertions based on the properties and methods of the Maze class
+            Assert.NotNull(maze);            
         }
         [Fact]
         public void CorrectLinuxMaze()
@@ -80,9 +79,9 @@ namespace Technical_AssignmentTest.DomainTests
             Maze maze = new(mazeString);
 
             // Assert
-            Assert.NotNull(maze);
-            // Add more assertions based on the properties and methods of the Maze class
+            Assert.NotNull(maze);            
         }
+
         [Fact]
         public void IncorrectCharMaze()
         {

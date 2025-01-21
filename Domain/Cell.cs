@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Domain
@@ -15,6 +16,8 @@ namespace Domain
 
         public int X { get; init; }
         public int Y { get; init; }
+
+        [JsonIgnore]
         public bool IsEmptySpace { get; init; }
         public Cell(Maze maze, int x, int y)
         {
